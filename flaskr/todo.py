@@ -1,8 +1,8 @@
 from flask import Blueprint
 
-bp = Blueprint('todo', __name__, url_prefix='/todo')
+bp = Blueprint("todo", __name__, url_prefix="/todo")
 
-@bp.route('/')
+
+@bp.route("/")
 def todo():
-    return 'todo-list'
-
+    return "todo-list"
