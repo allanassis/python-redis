@@ -24,5 +24,8 @@ def create_app(test_config=None):
     def healthcheck():
         return 'Datebayou'
 
+    from . import todo
+    app.register_blueprint(todo.bp)
+
     return app
 
