@@ -2,3 +2,4 @@ Flask==1.1.1
 redis==3.3.6
 flask-redis==0.4.0
 black==19.3b0
+jsonschema==3.0.2
