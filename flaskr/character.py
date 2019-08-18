@@ -1,18 +1,18 @@
 from flask import Blueprint, request
 
-bp = Blueprint("todo", __name__, url_prefix="/todo")
+bp = Blueprint("character", __name__, url_prefix="/character")
 
 
 @bp.route("/")
-def todo_list():
+def character_list():
     """
         Get list
     """
-    return "todo-list"
+    return "character-list"
 
 
 @bp.route("/", methods=["POST"])
-def todo_post():
+def character_post():
     """
         Add a new item
     """
@@ -21,7 +21,7 @@ def todo_post():
 
 
 @bp.route("/<key>", methods=["PUT"])
-def todo_put(key):
+def character_put(key):
     """
         Update an item
     """
@@ -31,7 +31,7 @@ def todo_put(key):
 
 
 @bp.route("/<key>", methods=["DELETE"])
-def todo_delete(key):
+def character_delete(key):
     """
         Update an item
     """
