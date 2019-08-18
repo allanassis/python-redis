@@ -26,9 +26,9 @@ def create_app(test_config=None):
     def healthcheck():
         return "Datebayou"
 
-    from . import todo
+    from . import character
 
-    app.register_blueprint(todo.bp)
+    app.register_blueprint(character.bp)
     redis_client.init_app(app)
 
     return app
