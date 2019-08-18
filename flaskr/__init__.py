@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_redis import FlaskRedis
 
-REDIS_URL = "redis://localhost:6379"
 
 redis_client = FlaskRedis()
 
