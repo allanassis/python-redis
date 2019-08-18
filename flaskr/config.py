@@ -7,4 +7,5 @@ schema = {
         "last_name": {"type": "string"},
         "age": {"type": "number"},
     },
+    "required": ["name"]
 }
