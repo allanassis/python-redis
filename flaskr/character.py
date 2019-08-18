@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from .models.character import Character
-
+from .config import REDIS_URL
 
 bp = Blueprint("character", __name__, url_prefix="/character")
 
