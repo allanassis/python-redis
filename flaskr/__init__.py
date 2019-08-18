@@ -1,5 +1,9 @@
-import os
 from flask import Flask
+from flask_redis import FlaskRedis
+
+REDIS_URL = "redis://localhost:6379"
+
+redis_client = FlaskRedis()
 
 
 def create_app(test_config=None):
@@ -25,5 +29,6 @@ def create_app(test_config=None):
     from . import todo
 
     app.register_blueprint(todo.bp)
+    redis_client.init_app(app)
 
     return app
