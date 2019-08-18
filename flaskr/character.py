@@ -1,4 +1,6 @@
 from flask import Blueprint, request
+from .models.character import Character
+
 
 bp = Blueprint("character", __name__, url_prefix="/character")
 
@@ -16,8 +18,9 @@ def character_post():
     """
         Add a new item
     """
-    data = request.json
-    return data
+    c = Character(name="allan", last_name="assis", age=23)
+    # data = request.json
+    return c.save()
 
 
 @bp.route("/<key>", methods=["PUT"])
