@@ -10,7 +10,9 @@ def character_list():
     """
         Get list
     """
-    return "character-list"
+   # keys = [item.decode() for item in Character.get_all()]
+    return { "data": Character.get_all()}
+    #return "character-list"
 
 
 @bp.route("/", methods=["POST"])

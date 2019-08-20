@@ -40,3 +40,11 @@ class Character:
                     )
             return char
         return "not found"
+
+    @staticmethod
+    def get_all():
+        keys = [key.decode() for key in redis_client.keys("*")]
+        char_list = []
+        for key in keys:
+            char_list.append(json.loads(redis_client.get(key)))
+        return char_list
