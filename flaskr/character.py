@@ -19,7 +19,11 @@ def character_post():
         Add a new item
     """
     data = request.json
-    c = Character(name=data["name"], last_name=data["last_name"], age=data["age"])
+    c = Character(
+            name=data.get("name", None),
+            last_name=data.get("last_name", ""),
+            age=data.get("age", 0)
+            )
     return c.save()
 
 
@@ -29,8 +33,14 @@ def character_put(key):
         Update an item
     """
     data = request.json
-    data["key"] = key
-    return data
+    char = Character.get(key)
+    if type(char) != str:
+        char.name = data.get("name", None)
+        char.last_name = data.get("last_name","")
+        char.age = data.get("age",0)
+        return  char.save(update=True)
+
+    return char
 
 
 @bp.route("/<key>", methods=["DELETE"])

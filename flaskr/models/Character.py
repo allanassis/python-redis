@@ -13,7 +13,7 @@ class Character:
         self.last_name = last_name
         self.age = age
 
-    def save(self):
+    def save(self, update=False):
         doc = self.__dict__
 
         try:
@@ -21,10 +21,22 @@ class Character:
         except Exception as e:
             return {"code": 422, "msg": e.message}
 
-        if redis_client.get(self.name):
+        if redis_client.get(self.name) and not update:
             return {"code": 409, "msg": "conflict"}
 
         redis_client.set(self.name, json.dumps(doc))
         redis_client.bgsave()
 
         return doc
+
+    @staticmethod
+    def get(name):
+        doc  = json.loads(redis_client.get(name))
+        if doc:
+            char = Character(
+                    name=doc["name"],
+                    last_name=doc["last_name"],
+                    age=doc["age"]
+                    )
+            return char
+        return "not found"
