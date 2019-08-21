@@ -28,7 +28,7 @@ class Character:
         redis_client.bgsave()
 
         return doc
- 
+
     def delete(self):
         return redis_client.delete(self.name)
 

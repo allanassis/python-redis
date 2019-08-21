@@ -51,4 +51,4 @@ def character_delete(key):
         Update an item
     """
     char = Character.get(key)
-    return {"deleted": True} if char.delete() == 1 else { "deleted": False}
+    return {"deleted": True} if char.delete() == 1 else {"deleted": False}
