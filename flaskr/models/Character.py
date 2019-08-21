@@ -31,13 +31,11 @@ class Character:
 
     @staticmethod
     def get(name):
-        doc  = json.loads(redis_client.get(name))
+        doc = json.loads(redis_client.get(name))
         if doc:
             char = Character(
-                    name=doc["name"],
-                    last_name=doc["last_name"],
-                    age=doc["age"]
-                    )
+                name=doc["name"], last_name=doc["last_name"], age=doc["age"]
+            )
             return char
         return "not found"
 

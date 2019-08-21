@@ -10,9 +10,9 @@ def character_list():
     """
         Get list
     """
-   # keys = [item.decode() for item in Character.get_all()]
-    return { "data": Character.get_all()}
-    #return "character-list"
+    # keys = [item.decode() for item in Character.get_all()]
+    return {"data": Character.get_all()}
+    # return "character-list"
 
 
 @bp.route("/", methods=["POST"])
@@ -22,10 +22,10 @@ def character_post():
     """
     data = request.json
     c = Character(
-            name=data.get("name", None),
-            last_name=data.get("last_name", ""),
-            age=data.get("age", 0)
-            )
+        name=data.get("name", None),
+        last_name=data.get("last_name", ""),
+        age=data.get("age", 0),
+    )
     return c.save()
 
 
@@ -38,9 +38,9 @@ def character_put(key):
     char = Character.get(key)
     if type(char) != str:
         char.name = data.get("name", None)
-        char.last_name = data.get("last_name","")
-        char.age = data.get("age",0)
-        return  char.save(update=True)
+        char.last_name = data.get("last_name", "")
+        char.age = data.get("age", 0)
+        return char.save(update=True)
 
     return char
 
