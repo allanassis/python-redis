@@ -50,7 +50,5 @@ def character_delete(key):
     """
         Update an item
     """
-
-    data = request.json
-    data["key"] = key
-    return data
+    char = Character.get(key)
+    return {"deleted": True} if char.delete() == 1 else { "deleted": False}
